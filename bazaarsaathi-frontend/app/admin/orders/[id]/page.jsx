@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import api from '@/lib/axios'
 import OrderTimeline from '@/components/user/OrderTimeline'
 import OrderStatusUpdater from '@/components/admin/OrderStatusUpdater'
+export const dynamic = 'force-dynamic'
 
 export default function AdminOrderDetailPage() {
   const { id }   = useParams()
