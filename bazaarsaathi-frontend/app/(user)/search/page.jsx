@@ -1,8 +1,9 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import api from '@/lib/axios'
 import ProductCard from '@/components/user/ProductCard'
+
 export const dynamic = 'force-dynamic'
 
 const SORT_OPTIONS = [
@@ -13,17 +14,18 @@ const SORT_OPTIONS = [
   { label: 'Best Discount',      value: 'discount' },
 ]
 
-export default function SearchPage() {
+// ── Inner component that uses useSearchParams ────────────────
+function SearchContent() {
   const searchParams = useSearchParams()
   const router       = useRouter()
   const q            = searchParams.get('q') || ''
 
-  const [products,   setProducts]   = useState([])
-  const [pagination, setPagination] = useState(null)
-  const [loading,    setLoading]    = useState(true)
-  const [sort,       setSort]       = useState('newest')
-  const [inStock,    setInStock]    = useState(false)
-  const [page,       setPage]       = useState(1)
+  const [products,    setProducts]    = useState([])
+  const [pagination,  setPagination]  = useState(null)
+  const [loading,     setLoading]     = useState(true)
+  const [sort,        setSort]        = useState('newest')
+  const [inStock,     setInStock]     = useState(false)
+  const [page,        setPage]        = useState(1)
   const [searchInput, setSearchInput] = useState(q)
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function SearchPage() {
           sort,
           page,
           limit: 12,
-          ...(q && { search: q }),
+          ...(q       && { search: q }),
           ...(inStock && { inStock: 'true' }),
         })
         const res = await api.get(`/products?${params}`)
@@ -64,7 +66,7 @@ export default function SearchPage() {
     <div className="section">
       <div className="page-wrapper">
 
-        {/* ── Search Bar ──────────────────────────────── */}
+        {/* Search Bar */}
         <form onSubmit={handleSearch} className="flex gap-2 mb-6">
           <input
             type="text"
@@ -78,13 +80,12 @@ export default function SearchPage() {
           </button>
         </form>
 
-        {/* ── Result Header ───────────────────────────── */}
+        {/* Result Header */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
           <div>
             {q ? (
               <h1 className="font-heading text-xl font-bold text-dark">
-                Results for{' '}
-                <span className="text-primary">"{q}"</span>
+                Results for <span className="text-primary">"{q}"</span>
               </h1>
             ) : (
               <h1 className="font-heading text-xl font-bold text-dark">
@@ -113,19 +114,20 @@ export default function SearchPage() {
             <label className="flex items-center gap-2 cursor-pointer select-none">
               <div
                 onClick={() => { setInStock(!inStock); setPage(1) }}
-                className={`w-10 h-6 rounded-full transition-colors duration-200 relative
-                  ${inStock ? 'bg-primary' : 'bg-gray-200'}`}
+                className={`w-10 h-6 rounded-full transition-colors duration-200 relative ${
+                  inStock ? 'bg-primary' : 'bg-gray-200'
+                }`}
               >
-                <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full shadow transition-transform duration-200
-                  ${inStock ? 'translate-x-4' : 'translate-x-0'}`}
-                />
+                <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 ${
+                  inStock ? 'translate-x-4' : 'translate-x-0'
+                }`} />
               </div>
               <span className="text-sm font-semibold text-dark">In Stock Only</span>
             </label>
           </div>
         </div>
 
-        {/* ── Products Grid ────────────────────────────── */}
+        {/* Products Grid */}
         {loading ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {[...Array(12)].map((_, i) => (
@@ -143,10 +145,7 @@ export default function SearchPage() {
               No products found
             </p>
             <p className="text-gray-400 text-sm">
-              {q
-                ? `Try a different search term`
-                : `No products available right now`
-              }
+              {q ? 'Try a different search term' : 'No products available right now'}
             </p>
           </div>
         ) : (
@@ -157,7 +156,7 @@ export default function SearchPage() {
           </div>
         )}
 
-        {/* ── Pagination ───────────────────────────────── */}
+        {/* Pagination */}
         {pagination && pagination.pages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-10">
             <button
@@ -167,23 +166,21 @@ export default function SearchPage() {
             >
               ← Prev
             </button>
-
             <div className="flex items-center gap-1">
               {[...Array(pagination.pages)].map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setPage(i + 1)}
-                  className={`w-9 h-9 rounded-xl text-sm font-semibold transition-all
-                    ${page === i + 1
+                  className={`w-9 h-9 rounded-xl text-sm font-semibold transition-all ${
+                    page === i + 1
                       ? 'bg-primary text-white'
                       : 'text-dark hover:bg-primary-50'
-                    }`}
+                  }`}
                 >
                   {i + 1}
                 </button>
               ))}
             </div>
-
             <button
               onClick={() => setPage((p) => p + 1)}
               disabled={!pagination.hasNextPage}
@@ -196,5 +193,28 @@ export default function SearchPage() {
 
       </div>
     </div>
+  )
+}
+
+// ── Outer page wraps with Suspense ───────────────────────────
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="section">
+        <div className="page-wrapper">
+          <div className="animate-pulse grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-10">
+            {[...Array(12)].map((_, i) => (
+              <div key={i} className="card">
+                <div className="bg-gray-200 rounded-xl aspect-square mb-3" />
+                <div className="h-4 bg-gray-200 rounded mb-2" />
+                <div className="h-3 bg-gray-200 rounded w-1/2" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
   )
 }
