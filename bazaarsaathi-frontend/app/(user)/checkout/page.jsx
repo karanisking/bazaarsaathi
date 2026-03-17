@@ -8,6 +8,7 @@ import useAuthStore from '@/store/useAuthStore'
 import AddressCard from '@/components/user/AddressCard'
 import AddressForm from '@/components/user/AddressForm'
 import DiscountInput from '@/components/user/DiscountInput'
+export const dynamic = 'force-dynamic'
 
 export default function CheckoutPage() {
   const router      = useRouter()
