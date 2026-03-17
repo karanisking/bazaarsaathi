@@ -7,6 +7,7 @@ import api from '@/lib/axios'
 import useAuthStore from '@/store/useAuthStore'
 import useCartStore from '@/store/useCartStore'
 import ReviewCard from '@/components/user/ReviewCard'
+export const dynamic = 'force-dynamic'
 
 // ── Receives id as prop from server page ─────────────────────
 export default function ProductClient({ id }) {
