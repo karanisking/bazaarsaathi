@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import api from '@/lib/axios'
 import OrderTimeline from '@/components/user/OrderTimeline'
+export const dynamic = 'force-dynamic'
 
 const STATUS_STYLES = {
   Placed:             'status-placed',
