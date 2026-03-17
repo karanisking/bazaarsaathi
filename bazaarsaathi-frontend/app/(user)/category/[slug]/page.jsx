@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import api from '@/lib/axios'
 import ProductCard from '@/components/user/ProductCard'
+export const dynamic = 'force-dynamic'
 
 const SORT_OPTIONS = [
   { label: 'Newest',        value: 'newest' },
