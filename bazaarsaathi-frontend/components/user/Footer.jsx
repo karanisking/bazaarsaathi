@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-            <img src="/logo.png" alt="BazaarSathi" className="h-12 w-auto mb-2" />
+            <img src="/logo.png" alt="BazaarSaathi" className="h-12 w-auto mb-2" />
               <span className="font-heading font-bold text-xl">
                 Bazaar<span className="text-primary">Saathi</span>
               </span>
@@ -51,7 +51,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li className="flex items-center gap-2">
-                <span>📧</span> support@bazaarsathi.com
+                <span>📧</span> support@bazaarsaathi.com
               </li>
               <li className="flex items-center gap-2">
                 <span>📞</span> +91 98765 43210
@@ -66,7 +66,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-gray-500 text-sm">
-            © 2025 BazaarSathi. All rights reserved.
+            © 2026 BazaarSaathi. All rights reserved.
           </p>
           <p className="text-gray-500 text-sm">
             Made with ❤️ in India

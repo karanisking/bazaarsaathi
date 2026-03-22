@@ -40,9 +40,9 @@ export default function Navbar() {
 
           {/* ── Logo ─────────────────────────────────────── */}
           <Link href="/" className="flex items-center gap-1 shrink-0">
-            <img src="/logo.png" alt="BazaarSathi" className="h-10 w-auto" />
+            <img src="/logo.png" alt="BazaarSaathi" className="h-10 w-auto" />
             <span className="font-heading font-bold text-xl text-dark">
-              Bazaar<span className="text-primary">Sasthi</span>
+              Bazaar<span className="text-primary">Saathi</span>
             </span>
           </Link>
 

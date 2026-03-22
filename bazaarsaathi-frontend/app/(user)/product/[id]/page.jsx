@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
     const data = await res.json()
     const p    = data.data
     return {
-      title:       `${p.name} — BazaarSathi`,
+      title:       `${p.name} — BazaarSaathi`,
       description: p.description?.slice(0, 155),
       openGraph: {
         title:  p.name,
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
       },
     }
   } catch {
-    return { title: 'Product — BazaarSathi' }
+    return { title: 'Product — BazaarSaathi' }
   }
 }
 

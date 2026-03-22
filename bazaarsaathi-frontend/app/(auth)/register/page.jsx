@@ -65,7 +65,7 @@ export default function RegisterPage() {
       await login(token, user)
       await fetchCart()
 
-      toast.success(`Welcome to BazaarSathi, ${user.name}!`)
+      toast.success(`Welcome to BazaarSaathi, ${user.name}!`)
       router.push('/')
     } catch (err) {
       const msg = err.response?.data?.message || 'Registration failed. Try again.'
@@ -87,7 +87,7 @@ export default function RegisterPage() {
           Create account 🛒
         </h2>
         <p className="text-gray-500 text-sm mb-6">
-          Join BazaarSathi and start shopping
+          Join BazaarSaathi and start shopping
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">

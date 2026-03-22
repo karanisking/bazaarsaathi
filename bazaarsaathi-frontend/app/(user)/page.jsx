@@ -73,7 +73,7 @@ export default function HomePage() {
             {/* Illustration */}
             <div className="flex-1 flex justify-center">
               <div className="w-72 h-72 bg-primary-50 rounded-full flex items-center justify-center">
-               <Image src="/logo.png" alt="BazaarSathi" width={180} height={60} />
+               <Image src="/logo.png" alt="BazaarSaathi" width={180} height={60} />
               </div>
             </div>
           </div>

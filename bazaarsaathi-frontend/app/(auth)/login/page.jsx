@@ -72,7 +72,7 @@ export default function LoginPage() {
           Welcome back 👋
         </h2>
         <p className="text-gray-500 text-sm mb-6">
-          Login to bazaarsaathi and continue shopping your favorite products!
+          Login to BazaarSaathi and continue shopping your favorite products!
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">

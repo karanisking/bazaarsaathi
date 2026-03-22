@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
           <span className="text-3xl">🛒</span>
         </div>
         <h1 className="font-heading text-3xl font-bold text-white">
-          Bazaar<span className="text-primary">Sathi</span>
+          Bazaar<span className="text-primary">Saathi</span>
         </h1>
         <p className="text-gray-400 text-sm mt-1">Admin Panel</p>
       </div>
@@ -96,7 +96,7 @@ export default function AdminLoginPage() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="admin@bazaarsathi.com"
+              placeholder="admin@bazaarsaathi.com"
               className={`w-full bg-white/10 border-2 rounded-xl px-4 py-2.5
                 text-white placeholder-gray-500 outline-none
                 focus:border-primary transition-all

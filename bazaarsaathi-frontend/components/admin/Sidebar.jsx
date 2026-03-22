@@ -38,7 +38,7 @@ export default function Sidebar() {
       <div className="flex items-center justify-between p-4 border-b border-white/10">
         {!collapsed && (
           <Link href="/admin/dashboard" className="font-heading font-bold text-lg">
-            Bazaar<span className="text-primary">Sathi</span>
+            Bazaar<span className="text-primary">Saathi</span>
           </Link>
         )}
         <button
