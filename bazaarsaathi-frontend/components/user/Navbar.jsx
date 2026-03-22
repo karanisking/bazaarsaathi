@@ -42,7 +42,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-1 shrink-0">
             <img src="/logo.png" alt="BazaarSathi" className="h-10 w-auto" />
             <span className="font-heading font-bold text-xl text-dark">
-              Bazaar<span className="text-primary">Sathi</span>
+              Bazaar<span className="text-primary">Sasthi</span>
             </span>
           </Link>
 

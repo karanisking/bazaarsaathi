@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
             <img src="/logo.png" alt="BazaarSathi" className="h-12 w-auto mb-2" />
               <span className="font-heading font-bold text-xl">
-                Bazaar<span className="text-primary">Sathi</span>
+                Bazaar<span className="text-primary">Saathi</span>
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
