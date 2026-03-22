@@ -9,9 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white text-lg">🛒</span>
-              </div>
+            <img src="/logo.png" alt="BazaarSathi" className="h-12 w-auto mb-2" />
               <span className="font-heading font-bold text-xl">
                 Bazaar<span className="text-primary">Sathi</span>
               </span>
